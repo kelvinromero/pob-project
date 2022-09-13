@@ -18,4 +18,9 @@ public class Employee extends Person {
     public ArrayList<ServiceOrder> getServiceOrders() {
         return serviceOrders;
     }
+
+    @Override
+    public String toString() {
+        return "Employee [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + ", serviceOrders=" + serviceOrders + "]";
+    }
 }

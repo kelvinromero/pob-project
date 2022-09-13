@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ServiceOrder {
     
@@ -9,14 +8,14 @@ public class ServiceOrder {
     private Pet pet;
     private ArrayList<Service> services;
     private Status status;
-    private Date date;
+    private String date;
 
-    public ServiceOrder(Tutor tutor, Pet pet, ArrayList<Service> services, Status status, Date date) {
+    public ServiceOrder(Tutor tutor, Pet pet, Status status) {
         this.tutor = tutor;
         this.pet = pet;
-        this.services = services;
+        this.services = new ArrayList<Service>();
         this.status = status;
-        this.date = date;
+        this.date = null;
     }
 
     public Tutor getTutor() {
@@ -51,12 +50,17 @@ public class ServiceOrder {
         this.status = status;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceOrder [tutor=" + tutor + ", pet=" + pet + ", services=" + services + ", status=" + status + ", date=" + date + "]";
     }
 
 }

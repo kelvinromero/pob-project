@@ -37,5 +37,9 @@ public class Pet {
 		this.weight = weight;
 	}
 	
+	@Override
+	public String toString() {
+		return "Pet [name=" + name + ", breed=" + breed + ", weight=" + weight + "]";
+	}
 	
 }

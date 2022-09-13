@@ -16,4 +16,8 @@ public class Breed {
 		this.name = name;
 	}
 	
+	@Override
+	public String toString() {
+		return "Breed [name=" + name + "]";
+	}
 }

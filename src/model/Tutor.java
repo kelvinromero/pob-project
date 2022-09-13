@@ -19,4 +19,8 @@ public class Tutor extends Person {
         return pets;
     }
     
+    @Override
+    public String toString() {
+        return "Tutor [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + ", pets=" + pets + "]";
+    }
 }

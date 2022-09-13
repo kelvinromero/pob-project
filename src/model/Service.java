@@ -26,4 +26,9 @@ public class Service {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "Service [name=" + name + ", price=" + price + "]";
+    }
+
 }
