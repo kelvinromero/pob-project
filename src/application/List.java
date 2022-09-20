@@ -3,7 +3,12 @@ package application;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
-import model.*;
+import model.Breed;
+import model.Pet;
+import model.Service;
+import model.ServiceOrder;
+import model.Status;
+import model.Tutor;
 
 public class List {
 

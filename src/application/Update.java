@@ -1,33 +1,54 @@
 package application;
 
-import com.db4o.ObjectContainer;
+//import javax.management.Query;
+import java.util.List;
 
-import model.*;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.query.Query;
+
+import model.Breed;
+import model.Pet;
+import model.Service;
+import model.ServiceOrder;
+import model.Status;
+import model.Tutor;
 
 public class Update {
 
+	protected ObjectContainer manager;
+	
     public Update() {
-        ObjectContainer manager = Util.createManager();
+        manager = Util.createManager();
         update();
         manager.close();
     }
 
     private void update() {
         updateTutor();
-        updatePet();
-        updateBreed();
-        updateStatus();
-        updateService();
-        updateServiceOrder();
+       	updatePet();
+       	updateBreed();
+       	updateStatus();
+       	updateService();
+       	updateServiceOrder();
     }
 
     private void updateTutor() {
-        System.out.println("Updating tutor...");
-        ObjectSet<Tutor> tutors = manager.query(Tutor.class);
-        Tutor tutor = tutors.next();
-        tutor.setName("Tutor 2");
-        manager.store(tutor);
-    }
+    	Query q = manager.query();
+		q.constrain(Tutor.class);  				
+		q.descend("name").constrain("Maria");		 
+		List<Tutor> resultados = q.execute(); 
+
+		if(resultados.size()>0) {
+			Tutor i =  resultados.get(0);
+			i.setName("Fatima");
+			manager.store(i);
+			manager.commit();
+			System.out.println("alterou");
+		}
+		else
+			System.out.println("inexistente");
+	}
 
     private void updatePet() {
         System.out.println("Updating pet...");
@@ -65,7 +86,7 @@ public class Update {
         System.out.println("Updating service order...");
         ObjectSet<ServiceOrder> serviceOrders = manager.query(ServiceOrder.class);
         ServiceOrder serviceOrder = serviceOrders.next();
-        serviceOrder.setObservation("Observation 2");
+        serviceOrder.setDate("02/04/2022");
         manager.store(serviceOrder);
     }
 

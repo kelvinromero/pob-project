@@ -1,29 +1,57 @@
 package application;
 
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 
-import model.*;
+import model.Breed;
+import model.Employee;
+import model.Pet;
+import model.Service;
+import model.ServiceOrder;
+import model.Status;
+import model.Tutor;
 
 public class Create {
 	
 	protected ObjectContainer manager;
 	
     public Create() {
+    	System.out.println("Creating");
 		manager = Util.createManager();
-        limparBanco();
+        cleanUpDb();
 		cadastrar();
 		manager.close();
 
-		System.out.println("end of all creation");
+		System.out.println("Done");
     }
 
-    private void limparBanco() {
-        manager.delete(Tutor.class);
-        manager.delete(Pet.class);
-        manager.delete(Breed.class);
-        manager.delete(Status.class);
-        manager.delete(Service.class);
+    private void cleanUpDb() {
+        ObjectSet<Tutor> tutors = manager.query(Tutor.class);
+        while (tutors.hasNext()) {
+            manager.delete(tutors.next());
+        }
+        ObjectSet<Pet> pets = manager.query(Pet.class);
+        while (pets.hasNext()) {
+            manager.delete(pets.next());
+        }
+        ObjectSet<Breed> breeds = manager.query(Breed.class);
+        while (breeds.hasNext()) {
+            manager.delete(breeds.next());
+        }
+        ObjectSet<Status> statuses = manager.query(Status.class);
+        while (statuses.hasNext()) {
+            manager.delete(statuses.next());
+        }
+        ObjectSet<Service> services = manager.query(Service.class);
+        while (services.hasNext()) {
+            manager.delete(services.next());
+        }
+        ObjectSet<ServiceOrder> serviceOrders = manager.query(ServiceOrder.class);
+        while (serviceOrders.hasNext()) {
+            manager.delete(serviceOrders.next());
+        }
     }
+
 
     private void cadastrar() {
         // creates 3 breeds of dogs
@@ -55,7 +83,7 @@ public class Create {
         Service service1 = new Service("Banho", 50.0);
         Service service2 = new Service("Tosa", 30.0);
         Service service3 = new Service("Banho e tosa", 70.0);
-        Service service4 = new Service("Vermifucação", 50.0);
+        Service service4 = new Service("Vermifugação", 50.0);
         Service service5 = new Service("Vacinação", 50.0);
 
         // creates 2 employees
@@ -63,9 +91,9 @@ public class Create {
         Employee employee2 = new Employee("Ana", "987.654.321-00", "11 99999-9998");
 
         // creates 3 service orders
-        ServiceOrder serviceOrder1 = new ServiceOrder(tutor1, pet1, status1);
-        ServiceOrder serviceOrder2 = new ServiceOrder(tutor2, pet2, status2);
-        ServiceOrder serviceOrder3 = new ServiceOrder(tutor3, pet3, status3);
+        ServiceOrder serviceOrder1 = new ServiceOrder(tutor1, pet1, status1, employee1);
+        ServiceOrder serviceOrder2 = new ServiceOrder(tutor2, pet2, status2, employee2);
+        ServiceOrder serviceOrder3 = new ServiceOrder(tutor3, pet3, status3, employee1);
 
         // adds services to service orders
         serviceOrder1.addService(service1);
@@ -73,6 +101,11 @@ public class Create {
         serviceOrder2.addService(service3);
         serviceOrder2.addService(service4);
         serviceOrder3.addService(service5);
+        
+        // adds servicesOrders to employees        
+        employee1.addServiceOrder(serviceOrder1);
+        employee2.addServiceOrder(serviceOrder2);
+        tutor3.addPet(pet3);
         
         // persist objects
         manager.store(breed1);

@@ -21,6 +21,6 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + ", serviceOrders=" + serviceOrders + "]";
+        return "Employee [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + "]";
     }
 }

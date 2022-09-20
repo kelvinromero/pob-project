@@ -4,9 +4,9 @@ public class Pet {
 	
 	private String name;
 	private Breed breed;
-	private Double weight ;
+	private double weight ;
 	
-	public Pet(String name, Breed breed, Double weight) {
+	public Pet(String name, Breed breed, double weight) {
 		super();
 		this.name = name;
 		this.breed = breed;
@@ -29,11 +29,11 @@ public class Pet {
 		this.breed = breed;
 	}
 
-	public Double getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Double weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	

@@ -1,20 +1,23 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceOrder {
     
     private Tutor tutor;
     private Pet pet;
-    private ArrayList<Service> services;
+    private List<Service> services;
     private Status status;
     private String date;
+    private Employee employee;
 
-    public ServiceOrder(Tutor tutor, Pet pet, Status status) {
+    public ServiceOrder(Tutor tutor, Pet pet, Status status, Employee employee) {
         this.tutor = tutor;
         this.pet = pet;
         this.services = new ArrayList<Service>();
         this.status = status;
+        this.employee = employee;
         this.date = null;
     }
 
@@ -29,12 +32,20 @@ public class ServiceOrder {
     public Pet getPet() {
         return pet;
     }
+    
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public void setPet(Pet pet) {
         this.pet = pet;
     }
 
-    public ArrayList<Service> getServices() {
+    public List<Service> getServices() {
         return services;
     }
 
@@ -60,7 +71,12 @@ public class ServiceOrder {
 
     @Override
     public String toString() {
-        return "ServiceOrder [tutor=" + tutor + ", pet=" + pet + ", services=" + services + ", status=" + status + ", date=" + date + "]";
+        return "ServiceOrder [employee=" + employee + "]";
     }
+
+	public void setObservation(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -5,6 +5,13 @@ import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 
 import model.ServiceOrder;
+import model.Breed;
+import model.Employee;
+import model.Tutor;
+//import model.Person;
+import model.Pet;
+import model.Service;
+import model.Status;
 
 public class Util {
 
@@ -16,6 +23,31 @@ public class Util {
         config.common().objectClass(ServiceOrder.class).cascadeOnUpdate(true);
         config.common().objectClass(ServiceOrder.class).cascadeOnDelete(true);
         config.common().objectClass(ServiceOrder.class).cascadeOnActivate(true);
+        
+        config.common().objectClass(Breed.class).cascadeOnUpdate(true);
+        config.common().objectClass(Breed.class).cascadeOnDelete(true);
+        config.common().objectClass(Breed.class).cascadeOnActivate(true);
+        
+        config.common().objectClass(Pet.class).cascadeOnUpdate(true);
+        config.common().objectClass(Pet.class).cascadeOnDelete(true);
+        config.common().objectClass(Pet.class).cascadeOnActivate(true);
+        
+        config.common().objectClass(Employee.class).cascadeOnUpdate(true);
+        config.common().objectClass(Employee.class).cascadeOnDelete(true);
+        config.common().objectClass(Employee.class).cascadeOnActivate(true);
+        
+        config.common().objectClass(Tutor.class).cascadeOnUpdate(true);
+        config.common().objectClass(Tutor.class).cascadeOnDelete(true);
+        config.common().objectClass(Tutor.class).cascadeOnActivate(true);
+        
+        config.common().objectClass(Service.class).cascadeOnUpdate(true);
+        config.common().objectClass(Service.class).cascadeOnDelete(true);
+        config.common().objectClass(Service.class).cascadeOnActivate(true);      
+        
+        config.common().objectClass(Status.class).cascadeOnUpdate(true);
+        config.common().objectClass(Status.class).cascadeOnDelete(true);
+        config.common().objectClass(Status.class).cascadeOnActivate(true);
+        
       
 		config.common().objectClass(ServiceOrder.class).objectField("tutor").indexed(true);
 
