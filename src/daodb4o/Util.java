@@ -1,4 +1,4 @@
-package application;
+package daodb4o;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
