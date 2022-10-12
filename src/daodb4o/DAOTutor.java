@@ -3,16 +3,16 @@ package daodb4o;
 import java.util.List;
 import com.db4o.query.Query;
 import application.Create;
-import model.Breed;
+import model.Tutor;
 
-public class DAOBreed extends DAO<Breed>{
+public class DAOTutor extends DAO<Tutor>{
     
-    public Breed read(Object chave){
+    public Tutor read(Object chave){
         String name = (String) chave;
         Query q = manager.query();
-        q.constrain(Breed.class);
+        q.constrain(Tutor.class);
         q.descend("name").constrain(name);
-        List<Breed> resultados = q.execute();
+        List<Tutor> resultados = q.execute();
         if (resultados.size()>0)
             return resultados.get(0);
         else
@@ -21,7 +21,7 @@ public class DAOBreed extends DAO<Breed>{
     
     public int size(){
         Query q = manager.query();
-        q.constrain(Breed.class);
+        q.constrain(Tutor.class);
         return q.execute().size();
     }
 
