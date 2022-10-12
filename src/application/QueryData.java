@@ -4,14 +4,10 @@ package application;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
 import com.db4o.query.Query;
 
-import model.Breed;
-import model.Pet;
-import model.Service;
+import daodb4o.Util;
 import model.ServiceOrder;
-import model.Status;
 import model.Tutor;
 
 public class QueryData {

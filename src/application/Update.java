@@ -7,6 +7,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
 
+import daodb4o.Util;
 import model.Breed;
 import model.Pet;
 import model.Service;
