@@ -1,14 +1,15 @@
 package daodb4o;
 
 import java.util.List;
+
 import com.db4o.query.Query;
-import application.Create;
+
 import model.Pet;
 
-public class DAOPet {
+public class DAOPet extends DAO<Pet> {
     public Pet read(Object chave){
         String name = (String) chave;
-        Query q = Create.manager.query();
+        Query q = manager.query();
         q.constrain(Pet.class);
         q.descend("name").constrain(name);
         List<Pet> resultados = q.execute();
@@ -19,7 +20,7 @@ public class DAOPet {
     }
 
     public int size(){
-        Query q = Create.manager.query();
+        Query q = manager.query();
         q.constrain(Pet.class);
         return q.execute().size();
     }

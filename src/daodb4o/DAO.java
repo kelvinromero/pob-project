@@ -13,8 +13,8 @@ public abstract class DAO<T> implements DAOInterface<T> {
 
 	public static void open(){	
 		if(manager==null){		
-			manager = Util.conectarDb4oLocal();		//banco local
-			//manager = Util.conectarDb4oRemoto();		//banco local
+			manager = Util.createManager();		//banco local
+			//manager = Util.conectarDb4oRemoto();		//banco remoto
 
 		}
 	}
