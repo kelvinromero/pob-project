@@ -4,7 +4,8 @@ public class Pet {
 	
 	private String name;
 	private Breed breed;
-	private double weight ;
+	private double weight;
+	private int id;
 	
 	public Pet(String name, Breed breed, double weight) {
 		super();
@@ -35,6 +36,10 @@ public class Pet {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Override

@@ -85,7 +85,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 	//	gerar novo id para o tipo T
 	//	-- obter o maior id para o tipo: ordenar decrescentemente e depois acessa o id do primeiro resultado
 
-	public int gerarId() {
+	public int generateId() {
 		@SuppressWarnings("unchecked")
 		Class<T> type =(Class<T>) ((ParameterizedType) this.getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
