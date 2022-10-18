@@ -11,6 +11,7 @@ public class ServiceOrder {
     private Status status;
     private String date;
     private Employee employee;
+    private int id;
 
     public ServiceOrder(Tutor tutor, Pet pet, Status status, Employee employee) {
         this.tutor = tutor;
@@ -67,6 +68,14 @@ public class ServiceOrder {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

@@ -52,54 +52,16 @@ public class Create {
             Facade.createServiceOrder("987.654.321-00", 3, "Em andamento", "634.456.789-00");
 
             System.out.println("Adding services to service orders");
-            
-
+            Facade.addServiceToServiceOrder("Banho", 1);
+            Facade.addServiceToServiceOrder("Tosa", 1);
+            Facade.addServiceToServiceOrder("Banho e tosa", 2);
+            Facade.addServiceToServiceOrder("Vermifugação", 2);
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
         }
 
         Facade.end();
-    }
-
-    private void cadastrar() {
-        //// adds services to service orders
-        //serviceOrder1.addService(service1);
-        //serviceOrder1.addService(service2);
-        //serviceOrder2.addService(service3);
-        //serviceOrder2.addService(service4);
-        //serviceOrder3.addService(service5);
-        //
-        //// adds servicesOrders to employees        
-        //employee1.addServiceOrder(serviceOrder1);
-        //employee2.addServiceOrder(serviceOrder2);
-        //tutor3.addPet(pet3);
-        //
-        //// persist objects
-        //manager.store(breed1);
-        //manager.store(breed2);
-        //manager.store(breed3);
-        //manager.store(pet1);
-        //manager.store(pet2);
-        //manager.store(pet3);
-        //manager.store(tutor1);
-        //manager.store(tutor2);
-        //manager.store(tutor3);
-        //manager.store(status1);
-        //manager.store(status2);
-        //manager.store(status3);
-        //manager.store(service1);
-        //manager.store(service2);
-        //manager.store(service3);
-        //manager.store(service4);
-        //manager.store(service5);
-        //manager.store(employee1);
-        //manager.store(employee2);
-        //manager.store(serviceOrder1);
-        //manager.store(serviceOrder2);
-        //manager.store(serviceOrder3);
-        //
-        //manager.commit();
     }
 
     public static void main(String[] args) {

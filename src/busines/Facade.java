@@ -133,6 +133,23 @@ public class Facade {
         daoServiceOrder.create(serviceOrder);
     }
 
+    public static List<ServiceOrder> readAllServiceOrders() {
+        return daoServiceOrder.readAll();
+    }
+
+    public static void addServiceToServiceOrder(String serviceName, int serviceOrderId) throws Exception {
+        Service service = daoService.read(serviceName);
+        if (service == null) {
+            throw new Exception("Service with name " + serviceName + " not found");
+        }
+        ServiceOrder serviceOrder = daoServiceOrder.read(serviceOrderId);
+        if (serviceOrder == null) {
+            throw new Exception("ServiceOrder with id " + serviceOrderId + " not found");
+        }
+        serviceOrder.addService(service);
+        daoServiceOrder.update(serviceOrder);
+    }
+
     public static void cleanUpDatabase() {
         daoBreed.deleteAll();
         daoPet.deleteAll();

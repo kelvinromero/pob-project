@@ -24,4 +24,10 @@ public class DAOServiceOrder extends DAO<ServiceOrder> {
         q.constrain(ServiceOrder.class);
         return q.execute().size();
     }
+
+    public void create(ServiceOrder obj){
+        int id = super.generateId();
+        obj.setId(id);
+        super.create(obj);
+    }
 }
