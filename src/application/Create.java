@@ -30,6 +30,30 @@ public class Create {
             Facade.addPetToTutor(2, "123.123.123-00");
             Facade.addPetToTutor(3, "987.654.321-00");
 
+            System.out.println("Creating statuses");
+            Facade.createStatus("Solicitado");
+            Facade.createStatus("Em andamento");
+            Facade.createStatus("Finalizado");
+
+            System.out.println("Creating services");
+            Facade.createService("Banho", 50);
+            Facade.createService("Tosa", 30);
+            Facade.createService("Banho e tosa", 70);
+            Facade.createService("Vermifugação", 20);
+            Facade.createService("Vacinação", 50);
+
+            System.out.println("Creating employees");
+            Facade.createEmployee("Joao", "634.456.789-00", "11 99999-9999");
+            Facade.createEmployee("Maria", "098.654.321-00", "11 99999-9999");
+
+            System.out.println("Creating service orders");
+            Facade.createServiceOrder("123.456.789-00", 1, "Solicitado", "098.654.321-00");
+            Facade.createServiceOrder("123.123.123-00", 2, "Solicitado", "098.654.321-00");
+            Facade.createServiceOrder("987.654.321-00", 3, "Em andamento", "634.456.789-00");
+
+            System.out.println("Adding services to service orders");
+            
+
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -39,46 +63,6 @@ public class Create {
     }
 
     private void cadastrar() {
-        //// creates 3 breeds of dogs
-        //Breed breed2 = new Breed("Pitbull");
-        //Breed breed3 = new Breed("Pug");
-
-        //// creates 3 pets
-        //Pet pet1 = new Pet("Rex", breed1, 4.0);
-        //Pet pet2 = new Pet("Bolt", breed2, 9.5);
-        //Pet pet3 = new Pet("Bolinha", breed3, 2.0);
-//
-        //// creates 3 tutors
-        //Tutor tutor1 = new Tutor("Joao", "123.456.789-00", "11 99999-9999");
-        //Tutor tutor2 = new Tutor("Maria", "987.654.321-00", "11 99999-9998");
-        //Tutor tutor3 = new Tutor("Carlos", "111.222.333-00", "11 99999-9997");
-//
-        //// adds pets to tutors
-        //tutor1.addPet(pet1);
-        //tutor2.addPet(pet2);
-        //tutor3.addPet(pet3);
-//
-        //// create 3 statuses
-        //Status status1 = new Status("Solicitado");
-        //Status status2 = new Status("Em andamento");
-        //Status status3 = new Status("Finalizado");
-//
-        //// creates 5 services
-        //Service service1 = new Service("Banho", 50.0);
-        //Service service2 = new Service("Tosa", 30.0);
-        //Service service3 = new Service("Banho e tosa", 70.0);
-        //Service service4 = new Service("Vermifugação", 50.0);
-        //Service service5 = new Service("Vacinação", 50.0);
-//
-        //// creates 2 employees
-        //Employee employee1 = new Employee("Jose", "123.456.789-00", "11 99999-9999");
-        //Employee employee2 = new Employee("Ana", "987.654.321-00", "11 99999-9998");
-//
-        //// creates 3 service orders
-        //ServiceOrder serviceOrder1 = new ServiceOrder(tutor1, pet1, status1, employee1);
-        //ServiceOrder serviceOrder2 = new ServiceOrder(tutor2, pet2, status2, employee2);
-        //ServiceOrder serviceOrder3 = new ServiceOrder(tutor3, pet3, status3, employee1);
-//
         //// adds services to service orders
         //serviceOrder1.addService(service1);
         //serviceOrder1.addService(service2);
