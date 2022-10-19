@@ -8,10 +8,10 @@ import model.Pet;
 
 public class DAOPet extends DAO<Pet> {
     public Pet read(Object chave){
-        String name = (String) chave;
+        int id = (int) chave;
         Query q = manager.query();
         q.constrain(Pet.class);
-        q.descend("name").constrain(name);
+        q.descend("id").constrain(id);
         List<Pet> resultados = q.execute();
         if (resultados.size()>0)
             return resultados.get(0);
@@ -23,5 +23,11 @@ public class DAOPet extends DAO<Pet> {
         Query q = manager.query();
         q.constrain(Pet.class);
         return q.execute().size();
+    }
+
+    public void create(Pet obj){
+        int id = super.generateId();
+        obj.setId(id);
+        super.create(obj);
     }
 }
