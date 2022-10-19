@@ -80,7 +80,7 @@ public class ServiceOrder {
 
     @Override
     public String toString() {
-        return "ServiceOrder [employee=" + employee + "]";
+        return "ServiceOrder [employee cpf=" + employee.getDocument() + ", ]";
     }
 
 	public void setObservation(String string) {

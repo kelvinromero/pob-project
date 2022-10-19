@@ -137,6 +137,10 @@ public class Facade {
         return daoServiceOrder.readAll();
     }
 
+    public static ServiceOrder readServiceOrder(int id) {
+        return daoServiceOrder.read(id);
+    }
+
     public static void addServiceToServiceOrder(String serviceName, int serviceOrderId) throws Exception {
         Service service = daoService.read(serviceName);
         if (service == null) {
@@ -147,6 +151,28 @@ public class Facade {
             throw new Exception("ServiceOrder with id " + serviceOrderId + " not found");
         }
         serviceOrder.addService(service);
+        daoServiceOrder.update(serviceOrder);
+    }
+
+    public static void changeEmployeeFromServiceOrder(String oldEmployeeCPF, String newEmployeeCPF, int serviceOrderId) throws Exception {
+        Employee oldEmployee = daoEmployee.read(oldEmployeeCPF);
+        if (oldEmployee == null) {
+            throw new Exception("Employee with cpf " + oldEmployeeCPF + " not found");
+        }
+        Employee newEmployee = daoEmployee.read(newEmployeeCPF);
+        if (newEmployee == null) {
+            throw new Exception("Employee with cpf " + newEmployeeCPF + " not found");
+        }
+        ServiceOrder serviceOrder = daoServiceOrder.read(serviceOrderId);
+        if (serviceOrder == null) {
+            throw new Exception("ServiceOrder with id " + serviceOrderId + " not found");
+        }
+
+        if (serviceOrder.getEmployee().getDocument().equals(newEmployee.getDocument())) {
+            throw new Exception("ServiceOrder already has employee with cpf " + newEmployee.getDocument());
+        }
+
+        serviceOrder.setEmployee(newEmployee);
         daoServiceOrder.update(serviceOrder);
     }
 
