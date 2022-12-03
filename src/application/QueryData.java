@@ -21,12 +21,12 @@ public class QueryData {
 
     private void query() {
     	queryTutorByBreedName("Poodle");
-        queryServiceOrdersByEmployeeAndStatus("Jose", "Solicitado");
+        queryServiceOrdersByEmployeeAndStatus("Maria", "Solicitado");
         queryServiceOrdersQuantityByStatusAndService("Solicitado", "Banho");
     }
     
     private void queryTutorByBreedName(String breedName) {
-    	System.out.println("Consultando tutores com pets da ra�a poodle");
+    	System.out.println("Consultando tutores com pets da raça poodle");
     	Query q = manager.query();
 		q.constrain(Tutor.class);
 		q.descend("pets").descend("breed").descend("name").constrain(breedName);
@@ -37,7 +37,7 @@ public class QueryData {
     }
 
     private void queryServiceOrdersByEmployeeAndStatus(String employeeName, String statusName) {
-    	System.out.println("Consultando ordens de servico do funcion�rio "+employeeName+" com status "+statusName);
+    	System.out.println("Consultando ordens de servico do funcionário "+employeeName+" com status "+statusName);
     	Query q = manager.query();
         q.constrain(ServiceOrder.class);
         q.descend("employee").descend("name").constrain(employeeName);

@@ -80,7 +80,12 @@ public class ServiceOrder {
 
     @Override
     public String toString() {
-        return "ServiceOrder [employee cpf=" + employee.getDocument() + ", ]";
+        String _employee = "employee cpf=" + employee.getDocument() + ", ";
+        String _tutor = "tutor cpf=" + tutor.getDocument() + ", ";
+        String _pet = "pet=" + pet.getName() + ", ";
+        String _services = "services=" + services + ", ";
+        String _status = "status=" + status.getName();
+        return "ServiceOrder [" + _employee + _tutor + _pet + _services + _status + "]";
     }
 
 	public void setObservation(String string) {

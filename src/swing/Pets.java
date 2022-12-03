@@ -58,7 +58,7 @@ public class Pets {
      * Initialize the contents of the frame.
      */
     public void initialize() {
-		Facade.initialize(); // TODO: Move this to main window init
+		Facade.init(); // TODO: Move this to main window init
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

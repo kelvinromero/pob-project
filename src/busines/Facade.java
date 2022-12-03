@@ -19,7 +19,8 @@ import model.Employee;
 import model.ServiceOrder;
 
 public class Facade {
-    private Facade() {}
+    private Facade() {
+    }
 
     private static DAOBreed daoBreed = new DAOBreed();
     private static DAOPet daoPet = new DAOPet();
@@ -38,10 +39,13 @@ public class Facade {
     }
 
     public static void createBreed(String name) throws Exception {
-        Breed breed = new Breed(name);
-        daoBreed.create(breed);
+        if (daoBreed.read(name) == null) {
+            daoBreed.create(new Breed(name));
+        } else {
+            throw new Exception("Breed already exists");
+        }
     }
-    
+
     public static List<Breed> readAllBreeds() {
         return daoBreed.readAll();
     }
@@ -56,15 +60,17 @@ public class Facade {
     }
 
     public static List<Pet> readAllPets() {
-    	DAO.begin();
         List<Pet> pets = daoPet.readAll();
-        DAO.commit();
         return pets;
     }
 
     public static void createTutor(String name, String cpf, String phone) throws Exception {
-        Tutor tutor = new Tutor(name, cpf, phone);
-        daoTutor.create(tutor);
+        if (daoTutor.read(cpf) == null) {
+            daoTutor.create(new Tutor(name, cpf, phone));
+        } else {
+            throw new Exception("Tutor already exists");
+        }
+        
     }
 
     public static List<Tutor> readAllTutors() {
@@ -79,6 +85,9 @@ public class Facade {
         Tutor tutor = daoTutor.read(tutorCPF);
         if (tutor == null) {
             throw new Exception("Tutor with cpf " + tutorCPF + " not found");
+        }
+        if (tutor.getPets().contains(pet)) {
+            throw new Exception("Pet with id " + petId + " already belongs to tutor with cpf " + tutorCPF);
         }
         tutor.addPet(pet);
         daoTutor.update(tutor);
@@ -103,15 +112,19 @@ public class Facade {
     }
 
     public static void createEmployee(String name, String cpf, String phone) throws Exception {
-        Employee employee = new Employee(name, cpf, phone);
-        daoEmployee.create(employee);
+        if (daoEmployee.read(cpf) == null) {
+            daoEmployee.create(new Employee(name, cpf, phone));
+        } else {
+            throw new Exception("Employee already exists");
+        }
     }
 
     public static List<Employee> readAllEmployees() {
         return daoEmployee.readAll();
     }
 
-    public static void createServiceOrder(String tutorCPF, int petId, String statusName, String employeeCPF) throws Exception {
+    public static void createServiceOrder(String tutorCPF, int petId, String statusName, String employeeCPF)
+            throws Exception {
         Tutor tutor = daoTutor.read(tutorCPF);
         if (tutor == null) {
             throw new Exception("Tutor with cpf " + tutorCPF + " not found");
@@ -154,7 +167,8 @@ public class Facade {
         daoServiceOrder.update(serviceOrder);
     }
 
-    public static void changeEmployeeFromServiceOrder(String oldEmployeeCPF, String newEmployeeCPF, int serviceOrderId) throws Exception {
+    public static void changeEmployeeFromServiceOrder(String oldEmployeeCPF, String newEmployeeCPF, int serviceOrderId)
+            throws Exception {
         Employee oldEmployee = daoEmployee.read(oldEmployeeCPF);
         if (oldEmployee == null) {
             throw new Exception("Employee with cpf " + oldEmployeeCPF + " not found");

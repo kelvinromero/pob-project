@@ -22,8 +22,8 @@ public class Create {
 
             System.out.println("Creating tutors");
             Facade.createTutor("Joao", "123.456.789-00", "11 99999-9999");
-            Facade.createTutor("Maria", "987.654.321-00", "11 99999-9999");
-            Facade.createTutor("Jose", "123.123.123-00", "11 99999-9999");
+            Facade.createTutor("Maria", "987.654.321-00", "11 99999-9998");
+            Facade.createTutor("Jose", "123.123.123-00", "11 99999-9997");
 
             System.out.println("Adding pets to tutors");
             Facade.addPetToTutor(1, "123.456.789-00");
@@ -43,8 +43,8 @@ public class Create {
             Facade.createService("Vacinação", 50);
 
             System.out.println("Creating employees");
-            Facade.createEmployee("Joao", "634.456.789-00", "11 99999-9999");
-            Facade.createEmployee("Maria", "098.654.321-00", "11 99999-9999");
+            Facade.createEmployee("Joao", "634.456.789-00", "11 89999-9999");
+            Facade.createEmployee("Maria", "098.654.321-00", "11 89999-9998");
 
             System.out.println("Creating service orders");
             Facade.createServiceOrder("123.456.789-00", 1, "Solicitado", "098.654.321-00");
@@ -56,6 +56,7 @@ public class Create {
             Facade.addServiceToServiceOrder("Tosa", 1);
             Facade.addServiceToServiceOrder("Banho e tosa", 2);
             Facade.addServiceToServiceOrder("Vermifugação", 2);
+            Facade.addServiceToServiceOrder("Vacinação", 3);
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());

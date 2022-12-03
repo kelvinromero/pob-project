@@ -1,14 +1,7 @@
 package application;
 
-import java.util.List;
-
 import busines.Facade;
-import model.Breed;
-import model.Pet;
-import model.Service;
 import model.ServiceOrder;
-import model.Status;
-import model.Tutor;
 
 public class Update {
     public Update() {
