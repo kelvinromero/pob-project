@@ -1,0 +1,31 @@
+[EL Fine]: server: 2022-12-11 22:09:24.265--Thread(Thread[#1,main,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Warning]: metadata: 2022-12-11 22:09:24.468--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The java.lang.Object class was compiled with an unsupported JDK. Report this error to the EclipseLink open source project.
+java.lang.IllegalArgumentException: Unsupported class file major version 63
+[EL Severe]: metadata: 2022-12-11 22:09:24.473--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The java.lang.Object class was compiled with an unsupported JDK. Report this error to the EclipseLink open source project.
+java.lang.ArrayIndexOutOfBoundsException: Index 8 out of bounds for length 0
+[EL Config]: metadata: 2022-12-11 22:09:24.479--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The access type for the persistent class [class model.Breed] is set to [FIELD].
+[EL Warning]: metadata: 2022-12-11 22:09:24.485--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The java.lang.String class was compiled with an unsupported JDK. Report this error to the EclipseLink open source project.
+java.lang.IllegalArgumentException: Unsupported class file major version 63
+[EL Severe]: metadata: 2022-12-11 22:09:24.486--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The java.lang.String class was compiled with an unsupported JDK. Report this error to the EclipseLink open source project.
+java.lang.ArrayIndexOutOfBoundsException: Index 8 out of bounds for length 0
+[EL Config]: metadata: 2022-12-11 22:09:24.502--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The alias name for the entity class [class model.Breed] is being defaulted to: Breed.
+[EL Config]: metadata: 2022-12-11 22:09:24.52--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The column name for element [name] is being defaulted to: NAME.
+[EL Config]: metadata: 2022-12-11 22:09:24.521--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--The column name for element [id] is being defaulted to: ID.
+[EL Info]: 2022-12-11 22:09:24.697--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--EclipseLink, version: Eclipse Persistence Services - 3.1.0-M1.v202108080909
+[EL Fine]: connection: 2022-12-11 22:09:25.17--Thread(Thread[#1,main,5,main])--Detected database platform: org.eclipse.persistence.platform.database.PostgreSQLPlatform
+[EL Fine]: connection: 2022-12-11 22:09:25.184--ServerSession(1043208434)--Connection(257459516)--Thread(Thread[#1,main,5,main])--connecting(DatabaseLogin(
+	platform=>PostgreSQLPlatform
+	user name=> "postgres"
+	datasource URL=> "jdbc:postgresql://localhost:5432/pets"
+))
+[EL Config]: connection: 2022-12-11 22:09:25.247--ServerSession(1043208434)--Connection(304354378)--Thread(Thread[#1,main,5,main])--Connected: jdbc:postgresql://localhost:5432/pets
+	User: postgres
+	Database: PostgreSQL  Version: 15.1 (Debian 15.1-1.pgdg110+1)
+	Driver: PostgreSQL JDBC Driver  Version: 42.3.3
+[EL Fine]: connection: 2022-12-11 22:09:25.33--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--/file:/C:/Users/kelvi/Workspace/ifpb/pob-project/target/classes/_eclipselink_url=jdbc:postgresql://localhost:5432/pets_user=postgres login successful
+[EL Fine]: sql: 2022-12-11 22:09:25.44--ClientSession(1750286943)--Connection(304354378)--Thread(Thread[#1,main,5,main])--INSERT INTO breeds (NAME) VALUES (?)
+	bind => [Poddle]
+[EL Fine]: sql: 2022-12-11 22:09:25.446--ClientSession(1750286943)--Connection(304354378)--Thread(Thread[#1,main,5,main])--select lastval()
+[EL Fine]: connection: 2022-12-11 22:09:25.457--ServerSession(1043208434)--Connection(304354378)--Thread(Thread[#1,main,5,main])--disconnect
+[EL Fine]: connection: 2022-12-11 22:09:25.458--ServerSession(1043208434)--Thread(Thread[#1,main,5,main])--/file:/C:/Users/kelvi/Workspace/ifpb/pob-project/target/classes/_eclipselink_url=jdbc:postgresql://localhost:5432/pets_user=postgres logout successful
+[EL Fine]: connection: 2022-12-11 22:09:25.458--ServerSession(1043208434)--Connection(257459516)--Thread(Thread[#1,main,5,main])--disconnect

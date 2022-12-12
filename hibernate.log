@@ -1,0 +1,3 @@
+22:09:23,899  INFO DAO:29 - DAO.open - lendo arquivo db.properties: 
+22:09:23,904  INFO DAO:35 - unidade de persistencia selecionada=> eclipselink
+22:09:23,904  INFO DAO:40 - configurando postgresql
