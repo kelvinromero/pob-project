@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "breeds")
 public class Breed {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
