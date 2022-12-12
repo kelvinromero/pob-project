@@ -19,3 +19,4 @@ bin/
 !.vscode/extensions.json
 .history/*
 /target/
+*.log
