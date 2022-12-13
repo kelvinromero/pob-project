@@ -2,6 +2,7 @@ package application;
 
 import busines.Facade;
 import model.Service;
+import model.Breed;
 
 public class Create {
     public Create() {
@@ -35,6 +36,7 @@ public class Create {
 
         s = Facade.createService("vacinação");
         System.out.println("--->"+s);
+    }
     
     private void createBreeds() throws Exception {
         Breed b;

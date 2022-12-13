@@ -1,7 +1,5 @@
 package daojpa;
 
-import java.util.List;
-
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import model.Breed;

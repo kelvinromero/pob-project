@@ -65,7 +65,7 @@ public class Facade {
 
         daoService.delete(service);
         DAO.commit();
-
+    }
     public static void updateService(String serviceName, double newPrice) {
         DAO.begin();
 
