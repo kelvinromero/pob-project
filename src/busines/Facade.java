@@ -21,16 +21,57 @@ public class Facade {
     }
 
     public static Breed createBreed(String name) throws Exception {
-    	    	
-    	DAO.begin();
-        Breed breed = new Breed(name);
-        daoBreed.create(breed);
+        DAO.begin();
+
+        if (daoBreed.read(name) != null) {
+            throw new Exception("Breed already exists");
+        }
+
+        Breed b = new Breed(name);
+        daoBreed.create(b);
+
         DAO.commit();
                 
-        return breed;
+        return b;
     }
 
     public static List<Breed> readAllBreeds() {
         return daoBreed.readAll();
+    }
+
+    public static void deleteBreed(String breedName) {
+        DAO.begin();
+
+        Breed breed = daoBreed.read(breedName);
+
+        if (breed == null) {
+            throw new RuntimeException("Breed does not exist");
+        }
+
+        daoBreed.delete(breed);
+
+        DAO.commit();
+    }
+
+    public static void updateBreed(String breedName, String newName) {
+        DAO.begin();
+
+        Breed breed = daoBreed.read(breedName);
+
+        if (breed == null) {
+            throw new RuntimeException("Breed does not exist");
+        }
+
+        breed.setName(newName);
+
+        DAO.commit();
+    }
+
+    public static void listBreeds() {
+        List<Breed> breeds = readAllBreeds();
+
+        for (Breed breed : breeds) {
+            System.out.println(breed);
+        }
     }
 }
