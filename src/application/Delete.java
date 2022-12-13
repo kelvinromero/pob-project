@@ -9,10 +9,8 @@ public class Delete {
         
         try {
             Facade.init();
-            Facade.deleteService("banho");
-            System.out.println("Serviço deletado com sucesso");
-            Facade.deleteBreed("labradoodle");
-            System.out.println("--->Breed deleted");
+            Facade.deletePet("Fido");
+            System.out.println("--->Pet deleted");
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());

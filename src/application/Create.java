@@ -4,6 +4,7 @@ import busines.Facade;
 import model.Service;
 import model.Breed;
 import model.Status;
+import model.Pet;
 
 public class Create {
     public Create() {
@@ -13,6 +14,7 @@ public class Create {
             createBreeds();
             createServices();
             createStatus();
+            createPets();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -71,6 +73,24 @@ public class Create {
 
         s = Facade.createStatus("em andamento");
         System.out.println("--->"+s);
+    }
+    
+    private void createPets() throws Exception {
+        Pet p;
+        p = Facade.createPet("Fido", "Poddle", 15);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fifi", "labradoodle", 12);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fufu", "Labrador", 31);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fafa", "Pitbull", 27);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fefe", "Pincher", 5);
+        System.out.println("--->"+p);
     }
     public static void main(String[] args) {
         new Create();

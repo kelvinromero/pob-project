@@ -12,6 +12,7 @@ public class List {
             Facade.listBreeds();
             Facade.listServices();
             Facade.listStatus();
+            Facade.listPets();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
