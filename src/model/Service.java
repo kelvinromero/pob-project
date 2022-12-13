@@ -1,9 +1,18 @@
 package model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "services")
 public class Service {
-    
+    @Id
     private String name;
     private double price;
+
+    public Service(){
+    }
 
     public Service(String name, double price) {
         this.name = name;

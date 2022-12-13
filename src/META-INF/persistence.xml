@@ -11,8 +11,8 @@
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" 	value="org.postgresql.Driver" />
 			<property name="jakarta.persistence.jdbc.url"		value="jdbc:postgresql://localhost:5432/pets" />
-			<property name="jakarta.persistence.jdbc.user"		value="ifpb" />
-			<property name="jakarta.persistence.jdbc.password"	value="" />
+			<property name="jakarta.persistence.jdbc.user"		value="postgres" />
+			<property name="jakarta.persistence.jdbc.password"	value="ifpb" />
 			<property name="jakarta.persistence.schema-generation.database.action"	value="create" />
 			<property name="jakarta.persistence.schema-generation.scripts.action"	value="create" />
 			<property name="jakarta.persistence.schema-generation.scripts.create-target"	value="ddl.sql" />
@@ -23,7 +23,7 @@
  			<property name="eclipselink.logging.parameters" value="true"/>
 		</properties>
 	</persistence-unit>
-	
+
 	<persistence-unit name="hibernate">
 		<description>usa provedor Hibernate</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -31,9 +31,9 @@
 		<shared-cache-mode>NONE</shared-cache-mode>
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" 	value="org.postgresql.Driver" />
-			<property name="jakarta.persistence.jdbc.url"		value="jdbc:postgresql://localhost:5432/xxxx" />
-			<property name="jakarta.persistence.jdbc.user"		value="xxx" />
-			<property name="jakarta.persistence.jdbc.password"	value="xxx" />
+			<property name="jakarta.persistence.jdbc.url"		value="jdbc:postgresql://localhost:5432/pets" />
+			<property name="jakarta.persistence.jdbc.user"		value="postgres" />
+			<property name="jakarta.persistence.jdbc.password"	value="ifpb" />
 			
 			<property name="hibernate.dialect"   		value="org.hibernate.dialect.PostgreSQLDialect" />
    			<property name="hibernate.hbm2ddl.auto" 	value="update" />  
@@ -41,7 +41,7 @@
    			<property name="hibernate.format_sql" 		value="true" />
    			<property name="hibernate.show_sql" 		value="false" /> 
 			<property name="hibernate.use_sql_comments" value="false" />
-	</properties>
+		</properties>
 	</persistence-unit>
 	
 </persistence>

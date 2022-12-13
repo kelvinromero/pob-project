@@ -2,11 +2,10 @@ version: '3.7'
 
 services:
   postgres:
-    image: postgres
+    image: postgres:15.1-alpine
     container_name: postgres-ifpb
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ifpb
       POSTGRES_PASSWORD: ifpb
       POSTGRES_DB: pets
     ports:
@@ -22,5 +21,5 @@ services:
     ports:
       - "80:80"
       - "443:443"
-
-
+    volumes:
+    - ./servers.json:/pgadmin4/servers.json
