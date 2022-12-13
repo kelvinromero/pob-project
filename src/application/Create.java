@@ -5,6 +5,8 @@ import model.Service;
 import model.Breed;
 import model.Status;
 import model.Pet;
+import model.Tutor;
+import model.Employee;
 
 public class Create {
     public Create() {
@@ -15,6 +17,9 @@ public class Create {
             createServices();
             createStatus();
             createPets();
+            createTutors();
+            addPetToTutor();
+            createEmployees();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -91,6 +96,50 @@ public class Create {
 
         p = Facade.createPet("Fefe", "Pincher", 5);
         System.out.println("--->"+p);
+    }
+    
+    private void createTutors() throws Exception {
+        Tutor t;
+        t = Facade.createTutor("João", "12345678910", "982345678");
+        System.out.println("--->"+t);
+
+        t = Facade.createTutor("Maria", "12345678911", "982345679");
+        System.out.println("--->"+t);
+
+        t = Facade.createTutor("Pedro", "12345678912", "982345680");
+        System.out.println("--->"+t);
+
+        t = Facade.createTutor("Beatriz", "12345678913", "982345681");
+        System.out.println("--->"+t);
+    }
+
+    private void addPetToTutor() throws Exception {
+        Facade.addPetToTutor(1, "12345678910");
+        System.out.println("--->Pet added to tutor");
+
+        Facade.addPetToTutor(2, "12345678911");
+        System.out.println("--->Pet added to tutor");
+
+        Facade.addPetToTutor(3, "12345678912");
+        System.out.println("--->Pet added to tutor");
+
+        Facade.addPetToTutor(4, "12345678913");
+        System.out.println("--->Pet added to tutor");
+    }
+
+    private void createEmployees() throws Exception {
+        Employee e;
+        e = Facade.createEmployee("José", "12345678914", "982345680");
+        System.out.println("--->"+e);
+
+        e = Facade.createEmployee("Ana", "12345678915", "982345681");
+        System.out.println("--->"+e);
+
+        e = Facade.createEmployee("Joana", "12345678916", "982345682");
+        System.out.println("--->"+e);
+
+        e = Facade.createEmployee("Miguel", "12345678917", "982345683");
+        System.out.println("--->"+e);
     }
     public static void main(String[] args) {
         new Create();

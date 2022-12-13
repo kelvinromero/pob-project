@@ -7,11 +7,15 @@ import daojpa.DAOBreed;
 import daojpa.DAOService;
 import daojpa.DAOStatus;
 import daojpa.DAOPet;
+import daojpa.DAOTutor;
+import daojpa.DAOEmployee;
 
 import model.Service;
 import model.Breed;
 import model.Status;
 import model.Pet;
+import model.Tutor;
+import model.Employee;
 
 public class Facade {
     private Facade() {
@@ -21,6 +25,8 @@ public class Facade {
     private static DAOService daoService = new DAOService();
     private static DAOStatus daoStatus = new DAOStatus();
     private static DAOPet daoPet = new DAOPet();
+    private static DAOTutor daoTutor = new DAOTutor();
+    private static DAOEmployee daoEmployee = new DAOEmployee();
 
     public static void init() {
         DAO.open();
@@ -205,9 +211,9 @@ public class Facade {
     public static Pet createPet(String name, String breedName, double weight) throws Exception {
         DAO.begin();
 
-        if (daoPet.read(name) != null) {
-            throw new Exception("Pet already exists");
-        }
+        // if (daoPet.read(name) != null) {
+        //     throw new Exception("Pet already exists");
+        // }
 
         Breed breed = daoBreed.read(breedName);
 
@@ -223,10 +229,10 @@ public class Facade {
         return p;
     }
 
-    public static void deletePet(String petName) {
+    public static void deletePet(int petId) {
         DAO.begin();
 
-        Pet pet = daoPet.read(petName);
+        Pet pet = daoPet.read(petId);
 
         if (pet == null) {
             throw new RuntimeException("Pet does not exist");
@@ -239,10 +245,10 @@ public class Facade {
         DAO.commit();
     }
 
-    public static void updatePet(String petName, double newWeight) {
+    public static void updatePet(int petId, double newWeight) {
         DAO.begin();
 
-        Pet pet = daoPet.read(petName);
+        Pet pet = daoPet.read(petId);
 
         if (pet == null) {
             throw new RuntimeException("Pet does not exist");
@@ -263,6 +269,142 @@ public class Facade {
         for (Pet pet : pets) {
             System.out.println(pet);
         }
+    }
+
+    public static Tutor createTutor(String name, String document, String phone) throws Exception {
+        DAO.begin();
+
+        if (daoTutor.read(document) != null) {
+            throw new Exception("Tutor already exists");
+        }
+
+        Tutor t = new Tutor(name, document, phone);
+        daoTutor.create(t);
+
+        DAO.commit();
+
+        return t;
+    }
+
+    public static void deleteTutor(String document) {
+        DAO.begin();
+
+        Tutor tutor = daoTutor.read(document);
+
+        if (tutor == null) {
+            throw new RuntimeException("Tutor does not exist");
+        }
+
+        daoTutor.delete(tutor);
+
+        DAO.commit();
+    }
+
+    public static void updateTutor(String document, String newPhone) {
+        DAO.begin();
+
+        Tutor tutor = daoTutor.read(document);
+
+        if (tutor == null) {
+            throw new RuntimeException("Tutor does not exist");
+        }
+
+        tutor.setPhone(newPhone);
+
+        DAO.commit();
+    }
+
+    public static List<Tutor> readAllTutors() {
+        return daoTutor.readAll();
+    }
+
+    public static void listTutors() {
+        List<Tutor> tutors = readAllTutors();
+
+        for (Tutor tutor : tutors) {
+            System.out.println(tutor);
+        }
+    }
+
+    public static void addPetToTutor(int petId, String tutorCPF) throws Exception {
+        Pet pet = daoPet.read(petId);
+        if (pet == null) {
+            throw new Exception("Pet with id " + petId + " not found");
+        }
+        Tutor tutor = daoTutor.read(tutorCPF);
+        if (tutor == null) {
+            throw new Exception("Tutor with cpf " + tutorCPF + " not found");
+        }
+        tutor.addPet(pet);
+        daoTutor.update(tutor);
+    }
+
+    public static Employee createEmployee(String name, String document, String phone) throws Exception {
+        DAO.begin();
+
+        if (daoEmployee.read(document) != null) {
+            throw new Exception("Employee already exists");
+        }
+
+        Employee e = new Employee(name, document, phone);
+        daoEmployee.create(e);
+
+        DAO.commit();
+
+        return e;
+    }
+
+    public static void deleteEmployee(String document) {
+        DAO.begin();
+
+        Employee employee = daoEmployee.read(document);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee does not exist");
+        }
+
+        daoEmployee.delete(employee);
+
+        DAO.commit();
+    }
+
+    public static void updateEmployee(String document, String newPhone) {
+        DAO.begin();
+
+        Employee employee = daoEmployee.read(document);
+
+        if (employee == null) {
+            throw new RuntimeException("Employee does not exist");
+        }
+
+        employee.setPhone(newPhone);
+
+        DAO.commit();
+    }
+
+    public static List<Employee> readAllEmployees() {
+        return daoEmployee.readAll();
+    }
+
+    public static void listEmployees() {
+        List<Employee> employees = readAllEmployees();
+
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+
+    public static void cleanUpDatabase() {
+        DAO.begin();
+        System.out.println("Cleaning up database aaa");
+        daoTutor.deleteAll();
+        daoEmployee.deleteAll();
+        daoStatus.deleteAll();
+        daoService.deleteAll();
+        daoPet.deleteAll();
+        daoBreed.deleteAll();
+        // daoServiceOrder.deleteAll();
+        DAO.commit();
     }
 }
 

@@ -6,12 +6,12 @@ import model.Pet;
 
 public class DAOPet extends DAO<Pet>{
 
-	public Pet read(Object name) {
+	public Pet read(Object id) {
 		try {
 			TypedQuery<Pet> q = manager.createQuery(""
-					+ "select p from Pet p where p.name = :name"
+					+ "select p from Pet p where p.id = :id"
 					+ "", Pet.class);
-			q.setParameter("name", name);
+			q.setParameter("id", id);
 			
 			return q.getSingleResult();
 		}catch(NoResultException e) {
