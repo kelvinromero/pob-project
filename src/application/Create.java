@@ -2,14 +2,19 @@ package application;
 
 import busines.Facade;
 import model.Service;
+import model.Breed;
+import model.Status;
+import model.Pet;
 
 public class Create {
     public Create() {
 		System.out.println("Creating records");
         try {
             Facade.init();
-            createServices();
             createBreeds();
+            createServices();
+            createStatus();
+            createPets();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -19,23 +24,6 @@ public class Create {
         System.out.println("\nfim do programa !");
     }
 
-    private void createServices() throws Exception {
-        Service s;
-        s = Facade.createService("banho");
-        System.out.println("--->"+s);
-
-        s = Facade.createService("tosa");
-        System.out.println("--->"+s);
-
-        s = Facade.createService("banho e tosa");
-        System.out.println("--->"+s);
-
-        s = Facade.createService("vermifugação");
-        System.out.println("--->"+s);
-
-        s = Facade.createService("vacinação");
-        System.out.println("--->"+s);
-    
     private void createBreeds() throws Exception {
         Breed b;
         b = Facade.createBreed("Poddle");
@@ -54,6 +42,56 @@ public class Create {
         System.out.println("--->"+b);
     }
 
+    private void createServices() throws Exception {
+        Service s;
+        s = Facade.createService("banho");
+        System.out.println("--->"+s);
+
+        s = Facade.createService("tosa");
+        System.out.println("--->"+s);
+
+        s = Facade.createService("banho e tosa");
+        System.out.println("--->"+s);
+
+        s = Facade.createService("vermifugação");
+        System.out.println("--->"+s);
+
+        s = Facade.createService("vacinação");
+        System.out.println("--->"+s);
+    }
+
+    private void createStatus() throws Exception {
+        Status s;
+        s = Facade.createStatus("agendado");
+        System.out.println("--->"+s);
+
+        s = Facade.createStatus("cancelado");
+        System.out.println("--->"+s);
+
+        s = Facade.createStatus("concluído");
+        System.out.println("--->"+s);
+
+        s = Facade.createStatus("em andamento");
+        System.out.println("--->"+s);
+    }
+    
+    private void createPets() throws Exception {
+        Pet p;
+        p = Facade.createPet("Fido", "Poddle", 15);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fifi", "labradoodle", 12);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fufu", "Labrador", 31);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fafa", "Pitbull", 27);
+        System.out.println("--->"+p);
+
+        p = Facade.createPet("Fefe", "Pincher", 5);
+        System.out.println("--->"+p);
+    }
     public static void main(String[] args) {
         new Create();
     }

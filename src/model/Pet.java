@@ -1,11 +1,23 @@
 package model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "pets")
 public class Pet {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String name;
 	private Breed breed;
 	private double weight;
-	// private int id;
+	
+	public Pet(){
+	}
 	
 	public Pet(String name, Breed breed, double weight) {
 		super();
@@ -38,9 +50,9 @@ public class Pet {
 		this.weight = weight;
 	}
 
-	// public void setId(int id) {
-	// 	this.id = id;
-	// }
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	@Override
 	public String toString() {

@@ -2,15 +2,15 @@ package daojpa;
 
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
-import model.Breed;
+import model.Pet;
 
-public class DAOBreed extends DAO<Breed>{
+public class DAOPet extends DAO<Pet>{
 
-	public Breed read(Object name) {
+	public Pet read(Object name) {
 		try {
-			TypedQuery<Breed> q = manager.createQuery("" +
-					"select b from Breed b where b.name = :name" +
-					"", Breed.class);
+			TypedQuery<Pet> q = manager.createQuery(""
+					+ "select p from Pet p where p.name = :name"
+					+ "", Pet.class);
 			q.setParameter("name", name);
 			
 			return q.getSingleResult();

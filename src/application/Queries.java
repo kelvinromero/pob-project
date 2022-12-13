@@ -3,7 +3,6 @@ package application;
 import busines.Facade;
 
 public class Queries {
-:x
     public Queries() {
         System.out.println("Listing records");
         try {
