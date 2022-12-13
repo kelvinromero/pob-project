@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   postgres:
@@ -20,5 +20,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ifpb
     ports:
       - "80:80"
+      - "443:443"
     volumes:
     - ./servers.json:/pgadmin4/servers.json

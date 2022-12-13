@@ -5,14 +5,14 @@ import busines.Facade;
 public class Update {
 
     public Update() {
-        System.out.println("Atualizando serviço(s)");
+        System.out.println("Updating records");
 
         try {
             Facade.init();
-
             Facade.updateService("tosa", 30);
-
-            System.out.println("Serviço(s) atualizado(s) com sucesso");
+            System.out.println("--->Service updated");
+            Facade.updateBreed("Pitbull", "Bull Terrier");
+            System.out.println("--->Breed updated");
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());

@@ -8,8 +8,8 @@ public class Create {
 		System.out.println("Creating records");
         try {
             Facade.init();
-
             createServices();
+            createBreeds();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -35,6 +35,23 @@ public class Create {
 
         s = Facade.createService("vacinação");
         System.out.println("--->"+s);
+    
+    private void createBreeds() throws Exception {
+        Breed b;
+        b = Facade.createBreed("Poddle");
+        System.out.println("--->"+b);
+
+        b = Facade.createBreed("labradoodle");
+        System.out.println("--->"+b);
+
+        b = Facade.createBreed("Labrador");
+        System.out.println("--->"+b);
+
+        b = Facade.createBreed("Pitbull");
+        System.out.println("--->"+b);
+
+        b = Facade.createBreed("Pincher");
+        System.out.println("--->"+b);
     }
 
     public static void main(String[] args) {

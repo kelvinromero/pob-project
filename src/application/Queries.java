@@ -3,23 +3,21 @@ package application;
 import busines.Facade;
 
 public class Queries {
-    
+:x
     public Queries() {
-        System.out.println("Pesquisando serviços");
-        
+        System.out.println("Listing records");
         try {
             Facade.init();
-
-            Facade.queryServices();
-
+            // TODO: add queries
         } catch (Exception e) {
-           System.out.println("--->"+e.getMessage());
+            System.out.println("--->" + e.getMessage());
         }
-
         Facade.end();
         System.out.println("\nfim do programa !");
     }
+
     public static void main(String[] args) {
         new Queries();
     }
+
 }

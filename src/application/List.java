@@ -5,12 +5,12 @@ import busines.Facade;
 public class List {
     
     public List() {
-        System.out.println("Listando serviços");
+        System.out.println("Listing records");
         
         try {
             Facade.init();
-
             Facade.listServices();
+            Facade.listBreeds();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
