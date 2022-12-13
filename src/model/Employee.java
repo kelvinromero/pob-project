@@ -1,21 +1,26 @@
 package model;
 
-import java.util.ArrayList;
+import jakarta.persistence.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Employee extends Person {
-    
-    private ArrayList<ServiceOrder> serviceOrders;
+    private List<ServiceOrder> serviceOrders = new ArrayList<ServiceOrder>();
+
+    public Employee() {
+    }
 
     public Employee(String name, String document, String phone) {
         super(name, document, phone);
-        serviceOrders = new ArrayList<ServiceOrder>();
     }
 
     public void addServiceOrder(ServiceOrder serviceOrder) {
         serviceOrders.add(serviceOrder);
     }
 
-    public ArrayList<ServiceOrder> getServiceOrders() {
+    public List<ServiceOrder> getServiceOrders() {
         return serviceOrders;
     }
 

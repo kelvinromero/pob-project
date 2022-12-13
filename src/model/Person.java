@@ -1,11 +1,24 @@
 package model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+
+@Entity
+@Table(name = "people")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Person {
 	
 	private String name;
+	@Id
 	private String document;
 	private String phone;
 	
+	public Person() {
+	}
+
 	public Person(String name, String document, String phone) {
 		this.name = name;
 		this.document = document;

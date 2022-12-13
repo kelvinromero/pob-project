@@ -13,6 +13,8 @@ public class List {
             Facade.listServices();
             Facade.listStatus();
             Facade.listPets();
+            Facade.listTutors();
+            Facade.listEmployees();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());

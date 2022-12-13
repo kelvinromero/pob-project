@@ -11,7 +11,7 @@ public class Update {
             Facade.init();
             Facade.updateService("tosa", 30);
             System.out.println("--->Service updated");
-            Facade.updatePet("Fido", 16 );
+            Facade.updatePet(1, 16 );
             System.out.println("--->Pet updated");
 
         } catch (Exception e) {

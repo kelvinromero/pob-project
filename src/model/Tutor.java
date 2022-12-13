@@ -1,21 +1,26 @@
 package model;
 
+import jakarta.persistence.Entity;
+
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Tutor extends Person {
+    private List<Pet> pets = new ArrayList<Pet>();
 
-    private ArrayList<Pet> pets;
+    public Tutor() {
+    }
 
     public Tutor(String name, String document, String phone) {
         super(name, document, phone);
-        pets = new ArrayList<Pet>();
     }
 
     public void addPet(Pet pet) {
         pets.add(pet);
     }
 
-    public ArrayList<Pet> getPets() {
+    public List<Pet> getPets() {
         return pets;
     }
     
