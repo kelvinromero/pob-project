@@ -1,10 +1,24 @@
 version: '3'
 
 services:
-  db:
+  postgres:
     image: postgres:15.1-alpine
-    restart: always
+    container_name: postgres-ifpb
+    restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: ifpb
+      POSTGRES_DB: pets
     ports:
       - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-ifpb
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ifpb@ifpb.edu.br
+      PGADMIN_DEFAULT_PASSWORD: ifpb
+    ports:
+      - "80:80"
+    volumes:
+    - ./servers.json:/pgadmin4/servers.json
