@@ -129,16 +129,16 @@ public class Create {
 
     private void createEmployees() throws Exception {
         Employee e;
-        e = Facade.createEmployee("José", "12345678914", "982345680");
+        e = Facade.createEmployee("José", "12345678914", "982345682");
         System.out.println("--->"+e);
 
-        e = Facade.createEmployee("Ana", "12345678915", "982345681");
+        e = Facade.createEmployee("Ana", "12345678915", "982345684");
         System.out.println("--->"+e);
 
-        e = Facade.createEmployee("Joana", "12345678916", "982345682");
+        e = Facade.createEmployee("Joana", "12345678916", "982345684");
         System.out.println("--->"+e);
 
-        e = Facade.createEmployee("Miguel", "12345678917", "982345683");
+        e = Facade.createEmployee("Miguel", "12345678917", "982345685");
         System.out.println("--->"+e);
     }
     public static void main(String[] args) {
