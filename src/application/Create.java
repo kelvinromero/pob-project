@@ -7,8 +7,7 @@ import model.Status;
 import model.Pet;
 import model.Tutor;
 import model.Employee;
-
-import java.util.ArrayList;
+import model.ServiceOrder;
 
 public class Create {
     public Create() {
@@ -20,6 +19,7 @@ public class Create {
             createStatus();
             createTutorAndPets();
             createEmployees();
+            createServiceOrders();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -88,24 +88,30 @@ public class Create {
         System.out.println("--->"+t);
         p = Facade.createPet("Fido", "Poddle", 15, t);
         System.out.println("--->"+p);
+        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Maria", "12345678911", "982345679");
         System.out.println("--->"+t);
         p = Facade.createPet("Fifi", "labradoodle", 12, t);
         System.out.println("--->"+p);
+        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Pedro", "12345678912", "982345680");
         System.out.println("--->"+t);
         p = Facade.createPet("Fufu", "Labrador", 31, t);
         System.out.println("--->"+p);
+        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Beatriz", "12345678913", "982345681");
         System.out.println("--->"+t);
         p = Facade.createPet("Fafa", "Pitbull", 27, t);
         System.out.println("--->"+p);
+        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         p = Facade.createPet("Fefe", "Pincher", 5, t);
         System.out.println("--->"+p);
+        // Facade.addPetToTutor(p.getId(), t.getDocument());
+
     }
 
     private void createEmployees() throws Exception {
@@ -121,6 +127,25 @@ public class Create {
 
         e = Facade.createEmployee("Miguel", "12345678917", "982345685");
         System.out.println("--->"+e);
+    }
+
+    private void createServiceOrders() throws Exception {
+        ServiceOrder so;
+
+        so = Facade.createServiceOrder("12345678910", 1, "agendado", "banho", "12345678914");
+        System.out.println("--->"+so);
+        
+        so = Facade.createServiceOrder("12345678911", 2, "em andamento", "banho e tosa", "12345678915");
+        System.out.println("--->"+so);
+        
+        so = Facade.createServiceOrder("12345678912", 3, "concluído", "tosa", "12345678916");
+        System.out.println("--->"+so);
+        
+        so = Facade.createServiceOrder("12345678913", 4, "cancelado", "vacinação", "12345678917");
+        System.out.println("--->"+so);
+           
+        so = Facade.createServiceOrder("12345678913", 5, "agendado", "vermifugação", "12345678914");
+        System.out.println("--->"+so);
     }
     public static void main(String[] args) {
         new Create();

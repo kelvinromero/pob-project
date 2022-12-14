@@ -19,4 +19,17 @@ public class DAOPet extends DAO<Pet>{
 		}
 	}
 
+	public Pet query(Object id) {
+		try {
+			TypedQuery<Pet> q = manager.createQuery(""
+					+ "select p from Pet p where p.id = :id"
+					+ "", Pet.class);
+			q.setParameter("id", id);
+			
+			return q.getSingleResult();
+		}catch(NoResultException e) {
+			return null;
+		}
+	}
+
 }

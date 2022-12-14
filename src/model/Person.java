@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "people")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Person {
+public abstract class Person {
 	
 	private String name;
 	@Id

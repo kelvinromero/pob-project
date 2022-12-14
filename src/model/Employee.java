@@ -8,14 +8,18 @@ import java.util.List;
 
 @Entity
 public class Employee extends Person {
-    @OneToMany
-    private List<ServiceOrder> serviceOrders = new ArrayList<ServiceOrder>();
+    @OneToMany(
+        mappedBy = "employee",
+        cascade = jakarta.persistence.CascadeType.ALL
+    )
+    private List<ServiceOrder> serviceOrders;
 
     public Employee() {
     }
 
     public Employee(String name, String document, String phone) {
         super(name, document, phone);
+        this.serviceOrders = new ArrayList<ServiceOrder>();
     }
 
     public void addServiceOrder(ServiceOrder serviceOrder) {

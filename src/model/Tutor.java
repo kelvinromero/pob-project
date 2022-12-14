@@ -1,7 +1,6 @@
 package model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
@@ -13,13 +12,14 @@ public class Tutor extends Person {
             mappedBy = "tutor",
             cascade = jakarta.persistence.CascadeType.ALL
     )
-    private List<Pet> pets = new ArrayList<Pet>();
+    private List<Pet> pets;
 
     public Tutor() {
     }
 
     public Tutor(String name, String document, String phone) {
         super(name, document, phone);
+        this.pets = new ArrayList<Pet>();
     }
 
     public void addPet(Pet pet) {

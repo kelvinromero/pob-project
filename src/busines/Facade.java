@@ -9,6 +9,7 @@ import daojpa.DAOStatus;
 import daojpa.DAOPet;
 import daojpa.DAOTutor;
 import daojpa.DAOEmployee;
+import daojpa.DAOServiceOrder;
 
 import model.Service;
 import model.Breed;
@@ -16,6 +17,7 @@ import model.Status;
 import model.Pet;
 import model.Tutor;
 import model.Employee;
+import model.ServiceOrder;
 
 public class Facade {
     private Facade() {
@@ -27,6 +29,7 @@ public class Facade {
     private static DAOPet daoPet = new DAOPet();
     private static DAOTutor daoTutor = new DAOTutor();
     private static DAOEmployee daoEmployee = new DAOEmployee();
+    private static DAOServiceOrder daoServiceOrder = new DAOServiceOrder();
 
     public static void init() {
         DAO.open();
@@ -405,6 +408,89 @@ public class Facade {
         daoBreed.deleteAll();
         // daoServiceOrder.deleteAll();
         DAO.commit();
+    }
+
+    // create methods for serviceOrder
+    public static ServiceOrder createServiceOrder(String tutorDocument,int petId, String statusName, String serviceName, String employeeDocument) throws Exception {
+        DAO.begin();
+
+        Tutor tutor = daoTutor.read(tutorDocument);
+        if (tutor == null) {
+            throw new Exception("Tutor with document " + tutorDocument + " not found");
+        }
+
+        Pet pet = daoPet.read(petId);
+        if (pet == null) {
+            throw new Exception("Pet with id " + petId + " not found");
+        }
+
+        Status status = daoStatus.read(statusName);
+        if (status == null) {
+            throw new Exception("Status with name " + statusName + " not found");
+        }
+
+        Service service = daoService.read(serviceName);
+        if (service == null) {
+            throw new Exception("Service with name " + serviceName + " not found");
+        }
+
+        Employee employee = daoEmployee.read(employeeDocument);
+        if (employee == null) {
+            throw new Exception("Employee with document " + employeeDocument + " not found");
+        }
+
+        ServiceOrder serviceOrder = new ServiceOrder(tutor, pet, status, employee);
+        daoServiceOrder.create(serviceOrder);
+        serviceOrder.addService(service);
+
+        DAO.commit();
+
+        return serviceOrder;
+    }
+
+    public static void deleteServiceOrder(int serviceOrderId) {
+        DAO.begin();
+
+        ServiceOrder serviceOrder = daoServiceOrder.read(serviceOrderId);
+
+        if (serviceOrder == null) {
+            throw new RuntimeException("ServiceOrder does not exist");
+        }
+
+        daoServiceOrder.delete(serviceOrder);
+
+        DAO.commit();
+    }
+
+    public static void updateServiceOrder(int serviceOrderId, String newStatusName) {
+        DAO.begin();
+
+        ServiceOrder serviceOrder = daoServiceOrder.read(serviceOrderId);
+
+        if (serviceOrder == null) {
+            throw new RuntimeException("ServiceOrder does not exist");
+        }
+
+        Status status = daoStatus.read(newStatusName);
+        if (status == null) {
+            throw new RuntimeException("Status does not exist");
+        }
+
+        serviceOrder.setStatus(status);
+
+        DAO.commit();
+    }
+
+    public static List<ServiceOrder> readAllServiceOrders() {
+        return daoServiceOrder.readAll();
+    }
+
+    public static void listServiceOrders() {
+        List<ServiceOrder> serviceOrders = readAllServiceOrders();
+
+        for (ServiceOrder serviceOrder : serviceOrders) {
+            System.out.println(serviceOrder);
+        }
     }
 }
 
