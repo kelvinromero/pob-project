@@ -1,6 +1,7 @@
 package model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
@@ -8,7 +9,10 @@ import java.util.List;
 
 @Entity
 public class Tutor extends Person {
-    @OneToMany
+    @OneToMany(
+            mappedBy = "tutor",
+            cascade = jakarta.persistence.CascadeType.ALL
+    )
     private List<Pet> pets = new ArrayList<Pet>();
 
     public Tutor() {

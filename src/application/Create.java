@@ -8,6 +8,8 @@ import model.Pet;
 import model.Tutor;
 import model.Employee;
 
+import java.util.ArrayList;
+
 public class Create {
     public Create() {
 		System.out.println("Creating records");
@@ -16,9 +18,7 @@ public class Create {
             createBreeds();
             createServices();
             createStatus();
-            createPets();
-            createTutors();
-            addPetToTutor();
+            createTutorAndPets();
             createEmployees();
 
         } catch (Exception e) {
@@ -80,51 +80,32 @@ public class Create {
         System.out.println("--->"+s);
     }
     
-    private void createPets() throws Exception {
+    private void createTutorAndPets() throws Exception {
         Pet p;
-        p = Facade.createPet("Fido", "Poddle", 15);
-        System.out.println("--->"+p);
-
-        p = Facade.createPet("Fifi", "labradoodle", 12);
-        System.out.println("--->"+p);
-
-        p = Facade.createPet("Fufu", "Labrador", 31);
-        System.out.println("--->"+p);
-
-        p = Facade.createPet("Fafa", "Pitbull", 27);
-        System.out.println("--->"+p);
-
-        p = Facade.createPet("Fefe", "Pincher", 5);
-        System.out.println("--->"+p);
-    }
-    
-    private void createTutors() throws Exception {
         Tutor t;
+
         t = Facade.createTutor("João", "12345678910", "982345678");
         System.out.println("--->"+t);
+        p = Facade.createPet("Fido", "Poddle", 15, t);
+        System.out.println("--->"+p);
 
         t = Facade.createTutor("Maria", "12345678911", "982345679");
         System.out.println("--->"+t);
+        p = Facade.createPet("Fifi", "labradoodle", 12, t);
+        System.out.println("--->"+p);
 
         t = Facade.createTutor("Pedro", "12345678912", "982345680");
         System.out.println("--->"+t);
+        p = Facade.createPet("Fufu", "Labrador", 31, t);
+        System.out.println("--->"+p);
 
         t = Facade.createTutor("Beatriz", "12345678913", "982345681");
         System.out.println("--->"+t);
-    }
+        p = Facade.createPet("Fafa", "Pitbull", 27, t);
+        System.out.println("--->"+p);
 
-    private void addPetToTutor() throws Exception {
-        Facade.addPetToTutor(1, "12345678910");
-        System.out.println("--->Pet added to tutor");
-
-        Facade.addPetToTutor(2, "12345678911");
-        System.out.println("--->Pet added to tutor");
-
-        Facade.addPetToTutor(3, "12345678912");
-        System.out.println("--->Pet added to tutor");
-
-        Facade.addPetToTutor(4, "12345678913");
-        System.out.println("--->Pet added to tutor");
+        p = Facade.createPet("Fefe", "Pincher", 5, t);
+        System.out.println("--->"+p);
     }
 
     private void createEmployees() throws Exception {
