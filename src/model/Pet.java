@@ -12,15 +12,18 @@ public class Pet {
 	@ManyToOne
 	private Breed breed;
 	private double weight;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Tutor tutor;
 	
 	public Pet(){
 	}
 	
-	public Pet(String name, Breed breed, double weight) {
+	public Pet(String name, Breed breed, double weight, Tutor tutor) {
 		super();
 		this.name = name;
 		this.breed = breed;
 		this.weight = weight;
+		this.tutor = tutor;
 	}
 
 	public String getName() {

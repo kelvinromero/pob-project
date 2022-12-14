@@ -208,7 +208,7 @@ public class Facade {
         }
     }
 
-    public static Pet createPet(String name, String breedName, double weight) throws Exception {
+    public static Pet createPet(String name, String breedName, double weight, Tutor tutor) throws Exception {
         DAO.begin();
 
         // if (daoPet.read(name) != null) {
@@ -221,7 +221,7 @@ public class Facade {
             throw new Exception("Breed does not exist");
         }
 
-        Pet p = new Pet(name, breed, weight);
+        Pet p = new Pet(name, breed, weight, tutor);
         daoPet.create(p);
 
         DAO.commit();
