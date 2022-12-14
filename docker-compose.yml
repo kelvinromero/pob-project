@@ -2,10 +2,11 @@ version: '3.7'
 
 services:
   postgres:
-    image: postgres:15.1-alpine
+    image: postgres
     container_name: postgres-ifpb
     restart: unless-stopped
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ifpb
       POSTGRES_DB: pets
     ports:

@@ -1,17 +1,30 @@
 package model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "service_orders")
 public class ServiceOrder {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @OneToOne
     private Tutor tutor;
+    @OneToOne
     private Pet pet;
+    @ManyToMany
     private List<Service> services;
+    @ManyToOne
     private Status status;
     private String date;
+    @ManyToOne
     private Employee employee;
-    private int id;
+
+    public ServiceOrder() {
+    }
 
     public ServiceOrder(Tutor tutor, Pet pet, Status status, Employee employee) {
         this.tutor = tutor;

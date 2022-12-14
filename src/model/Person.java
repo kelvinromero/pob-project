@@ -1,10 +1,9 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "people")
@@ -14,7 +13,8 @@ public class Person {
 	private String name;
 	@Id
 	private String document;
-	private String phone;
+	@ElementCollection
+	private List<String> phone = new ArrayList<>();
 	
 	public Person() {
 	}
@@ -22,7 +22,7 @@ public class Person {
 	public Person(String name, String document, String phone) {
 		this.name = name;
 		this.document = document;
-		this.phone = phone;
+		this.phone.add(phone);
 	}
 
 	public String getName() {
@@ -41,12 +41,12 @@ public class Person {
 		this.document = document;
 	}
 
-	public String getPhone() {
+	public List<String> getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void addPhone(String phone) {
+		this.phone.add(phone);
 	}
 
 	@Override
