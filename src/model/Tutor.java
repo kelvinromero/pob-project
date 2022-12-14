@@ -3,6 +3,7 @@ package model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,9 @@ public class Tutor extends Person {
             cascade = CascadeType.ALL
     )
     private List<Pet> pets;
-
+    @Version
+    private long version;
+    
     public Tutor() {
     }
 

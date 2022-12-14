@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,8 @@ public class Employee extends Person {
         cascade = jakarta.persistence.CascadeType.ALL
     )
     private List<ServiceOrder> serviceOrders;
+    @Version
+    private long version;
 
     public Employee() {
     }

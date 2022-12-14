@@ -3,6 +3,7 @@ package model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "services")
@@ -10,6 +11,8 @@ public class Service {
     @Id
     private String name;
     private double price;
+    @Version
+    private long version;
 
     public Service(){
     }

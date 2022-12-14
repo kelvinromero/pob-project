@@ -21,6 +21,8 @@ public class ServiceOrder {
     private Status status;
     @ManyToOne
     private Employee employee;
+    @Version
+    private long version;
 
     public ServiceOrder() {
     }

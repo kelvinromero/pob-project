@@ -15,6 +15,8 @@ public abstract class Person {
 	private String document;
 	@ElementCollection
 	private List<String> phone = new ArrayList<>();
+	@Version
+    private long version;
 	
 	public Person() {
 	}
