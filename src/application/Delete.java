@@ -9,14 +9,15 @@ public class Delete {
         
         try {
             Facade.init();
-            Facade.deletePet(1);
-            System.out.println("--->Pet deleted");
-
-            Facade.deleteTutor("12345678912");
-            System.out.println("--->Tutor deleted");
 
             Facade.deleteServiceOrder(1);
             System.out.println("--->ServiceOrder deleted");
+            
+            Facade.deletePet(1);
+            System.out.println("--->Pet deleted");
+
+            // Facade.deleteTutor("12345678912");
+            // System.out.println("--->Tutor deleted");
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());

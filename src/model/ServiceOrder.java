@@ -19,7 +19,6 @@ public class ServiceOrder {
     private List<Service> services;
     @ManyToOne
     private Status status;
-    // private String date;
     @ManyToOne
     private Employee employee;
 
@@ -32,7 +31,6 @@ public class ServiceOrder {
         this.services = new ArrayList<Service>();
         this.status = status;
         this.employee = employee;
-        // this.date = null;
     }
 
     public Tutor getTutor() {

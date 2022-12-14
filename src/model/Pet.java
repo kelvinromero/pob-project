@@ -1,6 +1,12 @@
 package model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pets")
@@ -12,7 +18,9 @@ public class Pet {
 	@ManyToOne
 	private Breed breed;
 	private double weight;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(
+		cascade = CascadeType.ALL
+	)
 	private Tutor tutor;
 	
 	public Pet(){
@@ -56,6 +64,14 @@ public class Pet {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 	
 	@Override

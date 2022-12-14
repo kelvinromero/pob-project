@@ -1,5 +1,6 @@
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class Tutor extends Person {
     @OneToMany(
             mappedBy = "tutor",
-            cascade = jakarta.persistence.CascadeType.ALL
+            cascade = CascadeType.ALL
     )
     private List<Pet> pets;
 
@@ -28,6 +29,10 @@ public class Tutor extends Person {
 
     public List<Pet> getPets() {
         return pets;
+    }
+
+    public void unbindPets() {
+        this.pets = null;
     }
     
     @Override

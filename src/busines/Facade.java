@@ -241,8 +241,6 @@ public class Facade {
             throw new RuntimeException("Pet does not exist");
         }
 
-        pet.setBreed(null);
-
         daoPet.delete(pet);
 
         DAO.commit();
@@ -298,9 +296,16 @@ public class Facade {
             throw new RuntimeException("Tutor does not exist");
         }
 
+        // tutor.getPets().forEach(pet -> {
+        //     pet.setTutor(null);
+        // });
+
+        // tutor.unbindPets();
+
         daoTutor.delete(tutor);
 
         DAO.commit();
+
     }
 
     public static void updateTutor(String document, String newPhone) {
@@ -410,7 +415,6 @@ public class Facade {
         DAO.commit();
     }
 
-    // create methods for serviceOrder
     public static ServiceOrder createServiceOrder(String tutorDocument,int petId, String statusName, String serviceName, String employeeDocument) throws Exception {
         DAO.begin();
 
@@ -491,6 +495,22 @@ public class Facade {
         for (ServiceOrder serviceOrder : serviceOrders) {
             System.out.println(serviceOrder);
         }
+    }
+
+    public static List<ServiceOrder> queryServiceOrdersByStatus(String statusName) {
+        return daoServiceOrder.queryServiceOrdersByStatus(statusName);
+    }
+
+    public static List<Tutor> queryTutorsWithMoreThanOnePet() {
+        return daoTutor.queryTutorsWithMoreThanOnePet();
+    }
+
+    public static List<Employee> queryEmployeesWithoutServiceOrder() {
+        return daoEmployee.queryEmployeesWithoutServiceOrder();
+    }
+
+    public static List<ServiceOrder> queryServiceOrdersByEmployeeAndStatus(String employeeDocument, String statusName) {
+        return daoServiceOrder.queryServiceOrdersByEmployeeAndStatus(employeeDocument, statusName);
     }
 }
 

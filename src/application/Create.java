@@ -127,6 +127,9 @@ public class Create {
 
         e = Facade.createEmployee("Miguel", "12345678917", "982345685");
         System.out.println("--->"+e);
+
+        e = Facade.createEmployee("Isabel", "12345678918", "982345686");
+        System.out.println("--->"+e);
     }
 
     private void createServiceOrders() throws Exception {
@@ -134,16 +137,16 @@ public class Create {
 
         so = Facade.createServiceOrder("12345678910", 1, "agendado", "banho", "12345678914");
         System.out.println("--->"+so);
-        
+
         so = Facade.createServiceOrder("12345678911", 2, "em andamento", "banho e tosa", "12345678915");
         System.out.println("--->"+so);
-        
+
         so = Facade.createServiceOrder("12345678912", 3, "concluído", "tosa", "12345678916");
         System.out.println("--->"+so);
-        
+
         so = Facade.createServiceOrder("12345678913", 4, "cancelado", "vacinação", "12345678917");
         System.out.println("--->"+so);
-           
+
         so = Facade.createServiceOrder("12345678913", 5, "agendado", "vermifugação", "12345678914");
         System.out.println("--->"+so);
     }
