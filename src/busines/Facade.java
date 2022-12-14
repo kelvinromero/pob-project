@@ -309,7 +309,7 @@ public class Facade {
             throw new RuntimeException("Tutor does not exist");
         }
 
-        tutor.setPhone(newPhone);
+        tutor.addPhone(newPhone);
 
         DAO.commit();
     }
@@ -377,7 +377,7 @@ public class Facade {
             throw new RuntimeException("Employee does not exist");
         }
 
-        employee.setPhone(newPhone);
+        employee.addPhone(newPhone);
 
         DAO.commit();
     }

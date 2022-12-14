@@ -1,12 +1,14 @@
 package model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Tutor extends Person {
+    @OneToMany
     private List<Pet> pets = new ArrayList<Pet>();
 
     public Tutor() {
