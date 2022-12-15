@@ -94,7 +94,6 @@ public class ReadAll {
             System.out.println(serviceOrder);
         }
     }
-
     public static void main(String[] args) {
         new ReadAll();
     }

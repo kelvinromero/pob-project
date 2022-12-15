@@ -52,11 +52,12 @@ public class Facade {
 
     public static void createPet(String name, String breedName, double weight) throws Exception {
         Breed breed = daoBreed.read(breedName);
-        if (breed == null) {
+        if (breed != null) {
+            daoPet.create(new Pet(breedName, breed, weight));
+        } else {
             throw new Exception("Breed not found");
         }
-        Pet pet = new Pet(name, breed, weight);
-        daoPet.create(pet);
+        
     }
 
     public static List<Pet> readAllPets() {
@@ -94,8 +95,11 @@ public class Facade {
     }
 
     public static void createStatus(String name) throws Exception {
-        Status status = new Status(name);
-        daoStatus.create(status);
+        if (daoStatus.read(name) == null) {
+            daoStatus.create(new Status(name));
+        } else {
+            throw new Exception("Status already exists");
+        }
     }
 
     public static List<Status> readAllStatus() {
@@ -103,8 +107,11 @@ public class Facade {
     }
 
     public static void createService(String name, double price) throws Exception {
-        Service service = new Service(name, price);
-        daoService.create(service);
+        if (daoService.read(name) == null) {
+            daoService.create(new Service(name, price));
+        } else {
+            throw new Exception("Service already exists");
+        }
     }
 
     public static List<Service> readAllServices() {

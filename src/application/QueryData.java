@@ -1,6 +1,5 @@
 package application;
 
-//import javax.management.Query;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
