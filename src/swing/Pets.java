@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,13 +17,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
-
-import model.Breed;
 import model.Pet;
-import application.Create;
-import daodb4o.Util;
 import busines.Facade;
 
 public class Pets {
@@ -119,26 +112,28 @@ public class Pets {
         petWeight.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String name = petName.getText();
                 String breedName = petBreed.getText();
                 String weight = petWeight.getText();
                 
-                Breed breed = new Breed(breedName);
                 if (name.isEmpty() || breedName.isEmpty() || weight.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Please fill all fields");
                 } else {
                     try {
                         double w = Double.parseDouble(weight);
-                        Pet p = new Pet(name, breed, w);
                         petName.setText("");
                         petBreed.setText("");
                         petWeight.setText("");
+                        Facade.createPet(name, breedName, w);
                         updateTable();
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(frame, "Weight must be a number");
-                    }
+                    } catch (Exception e1) {
+                    	JOptionPane.showMessageDialog(frame, e1);
+					}
                 }
             }
         }
@@ -148,17 +143,28 @@ public class Pets {
 
         JButton btnDelete = new JButton("Delete");
         btnDelete.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int row = table.getSelectedRow();
-                if (row == -1) {
-                    JOptionPane.showMessageDialog(frame, "Please select a pet");
+        	public void actionPerformed(ActionEvent e) {
+                String name = petName.getText();
+                // String breedName = petBreed.getText();
+                // String weight = petWeight.getText();
+                
+                if (name.isEmpty()) { // || breedName.isEmpty() || weight.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please fill all fields");
                 } else {
-                    String name = (String) table.getValueAt(row, 0);
-                    String breed = (String) table.getValueAt(row, 1);
-                    double weight = (double) table.getValueAt(row, 2);
-                    // Pet p = new Pet(name, breed, weight);
-                    // Delete.deletePet(p);
-                    updateTable();
+                    try {
+                        // double w = Double.parseDouble(weight);
+                        petName.setText("");
+                        petBreed.setText("");
+                        petWeight.setText("");
+                        try {
+                        	Facade.deletePet(name);                        	
+                        } catch (Exception e1) {
+                        	JOptionPane.showMessageDialog(frame, e1);
+    					}
+                        updateTable();
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(frame, "Weight must be a number");
+                    } 
                 }
             }
         }
@@ -168,18 +174,28 @@ public class Pets {
 
         JButton btnUpdate = new JButton("Update");
         btnUpdate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int row = table.getSelectedRow();
-                if (row == -1) {
-                    JOptionPane.showMessageDialog(frame, "Please select a pet");
+        	public void actionPerformed(ActionEvent e) {
+                String name = petName.getText();
+                // String breedName = petBreed.getText();
+                String weight = petWeight.getText();
+                
+                if (name.isEmpty() || weight.isEmpty()){ // || breedName.isEmpty() || weight.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please fill all fields");
                 } else {
-                    String name = (String) table.getValueAt(row, 0);
-                    String breed = (String) table.getValueAt(row, 1);
-                    double weight = (double) table.getValueAt(row, 2);
-                    // TODO:
-                    // Pet p = new Pet(name, breed, weight);
-                    // Update.updatePet(p);
-                    updateTable();
+                    try {
+                        double w = Double.parseDouble(weight);
+                        petName.setText("");
+                        petBreed.setText("");
+                        petWeight.setText("");
+                        try {
+                        	Facade.updatePetWeight(name, w);                        	
+                        } catch (Exception e1) {
+                        	JOptionPane.showMessageDialog(frame, e1);
+    					}
+                        updateTable();
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(frame, "Weight must be a number");
+                    } 
                 }
             }
         }

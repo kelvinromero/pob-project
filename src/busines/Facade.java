@@ -53,13 +53,36 @@ public class Facade {
     public static void createPet(String name, String breedName, double weight) throws Exception {
         Breed breed = daoBreed.read(breedName);
         if (breed != null) {
-            daoPet.create(new Pet(breedName, breed, weight));
+            if (daoPet.readByName(name) == null) {
+            	daoPet.create(new Pet(name, breed, weight));
+            } else {
+                throw new Exception("Pet Already exist");
+            }
         } else {
             throw new Exception("Breed not found");
         }
         
     }
-
+    
+    public static void deletePet(String name) throws Exception {
+        Pet pet = daoPet.readByName(name);
+        if (pet != null) {
+            daoPet.delete(pet);
+        } else {
+            throw new Exception("Pet not found");
+        }
+    }
+    
+    public static void updatePetWeight(String name, double weight) throws Exception {
+        Pet p = daoPet.readByName(name);
+        if (p != null) {
+            p.setWeight(weight);
+            daoPet.update(p);
+        } else {
+            throw new Exception("Pet not found");
+        }        
+    }
+    
     public static List<Pet> readAllPets() {
         List<Pet> pets = daoPet.readAll();
         return pets;

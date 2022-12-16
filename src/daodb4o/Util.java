@@ -27,8 +27,8 @@ public class Util {
         config.common().objectClass(Breed.class).cascadeOnDelete(true);
         config.common().objectClass(Breed.class).cascadeOnActivate(true);
         
-        config.common().objectClass(Pet.class).cascadeOnUpdate(true);
-        config.common().objectClass(Pet.class).cascadeOnDelete(true);
+        config.common().objectClass(Pet.class).cascadeOnUpdate(false);
+        config.common().objectClass(Pet.class).cascadeOnDelete(false);
         config.common().objectClass(Pet.class).cascadeOnActivate(true);
         
         config.common().objectClass(Employee.class).cascadeOnUpdate(true);

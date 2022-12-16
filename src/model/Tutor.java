@@ -1,10 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tutor extends Person {
 
-    private ArrayList<Pet> pets;
+    private List<Pet> pets;
     //public Person tutorPet;
 
     public Tutor(String name, String document, String phone) {
@@ -16,7 +17,7 @@ public class Tutor extends Person {
         pets.add(pet);
     }
 
-    public ArrayList<Pet> getPets() {
+    public List<Pet> getPets() {
         return pets;
     }
     
