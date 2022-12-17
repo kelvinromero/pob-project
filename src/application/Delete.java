@@ -16,9 +16,6 @@ public class Delete {
             Facade.deletePet(1);
             System.out.println("--->Pet deleted");
 
-            // Facade.deleteTutor("12345678912");
-            // System.out.println("--->Tutor deleted");
-
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
         }
