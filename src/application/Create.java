@@ -88,29 +88,24 @@ public class Create {
         System.out.println("--->"+t);
         p = Facade.createPet("Fido", "Poddle", 15, t);
         System.out.println("--->"+p);
-        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Maria", "12345678911", "982345679");
         System.out.println("--->"+t);
         p = Facade.createPet("Fifi", "labradoodle", 12, t);
         System.out.println("--->"+p);
-        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Pedro", "12345678912", "982345680");
         System.out.println("--->"+t);
         p = Facade.createPet("Fufu", "Labrador", 31, t);
         System.out.println("--->"+p);
-        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         t = Facade.createTutor("Beatriz", "12345678913", "982345681");
         System.out.println("--->"+t);
         p = Facade.createPet("Fafa", "Pitbull", 27, t);
         System.out.println("--->"+p);
-        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
         p = Facade.createPet("Fefe", "Pincher", 5, t);
         System.out.println("--->"+p);
-        // Facade.addPetToTutor(p.getId(), t.getDocument());
 
     }
 
