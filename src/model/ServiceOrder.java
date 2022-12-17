@@ -75,14 +75,6 @@ public class ServiceOrder {
         this.status = status;
     }
 
-    // public String getDate() {
-    //     return date;
-    // }
-
-    // public void setDate(String date) {
-    //     this.date = date;
-    // }
-
     public int getId() {
         return id;
     }
