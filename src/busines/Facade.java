@@ -214,9 +214,9 @@ public class Facade {
     public static Pet createPet(String name, String breedName, double weight, Tutor tutor) throws Exception {
         DAO.begin();
 
-        // if (daoPet.read(name) != null) {
-        //     throw new Exception("Pet already exists");
-        // }
+        if (daoPet.read(name) != null) {
+           throw new Exception("Pet already exists");
+        }
 
         Breed breed = daoBreed.read(breedName);
 
@@ -295,12 +295,6 @@ public class Facade {
         if (tutor == null) {
             throw new RuntimeException("Tutor does not exist");
         }
-
-        // tutor.getPets().forEach(pet -> {
-        //     pet.setTutor(null);
-        // });
-
-        // tutor.unbindPets();
 
         daoTutor.delete(tutor);
 
@@ -411,7 +405,7 @@ public class Facade {
         daoService.deleteAll();
         daoPet.deleteAll();
         daoBreed.deleteAll();
-        // daoServiceOrder.deleteAll();
+        daoServiceOrder.deleteAll();
         DAO.commit();
     }
 
