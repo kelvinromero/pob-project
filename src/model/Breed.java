@@ -10,11 +10,11 @@ import jakarta.persistence.Version;
 @Entity
 @Table(name = "breeds")
 public class Breed {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String name;
-	@Version
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    @Version
     private long version;
 
 	public Breed(){
