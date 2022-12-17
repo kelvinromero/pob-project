@@ -46,16 +46,3 @@ public class DAOServiceOrder extends DAO<ServiceOrder>{
 		}
 	}
 }
-
-// public List<ServiceOrder> queryServiceOrdersByServiceAndBreed(String service, String breed) {
-// 	try {
-// 		TypedQuery<ServiceOrder> q = manager.createQuery(""
-// 				+ "select so from ServiceOrder so join so.services se where se.name = :x and so join so.pet p where p.breed.name = :y"
-// 				+ "", ServiceOrder.class);
-// 		q.setParameter("x", service);
-// 		q.setParameter("y", breed);
-// 		return q.getResultList();
-// 	}catch(NoResultException e) {
-// 		return null;
-// 	}
-// }
