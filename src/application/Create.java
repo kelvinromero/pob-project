@@ -145,9 +145,8 @@ public class Create {
         so = Facade.createServiceOrder("12345678913", 5, "agendado", "vermifugação", "12345678914");
         System.out.println("--->"+so);
     }
+    
     public static void main(String[] args) {
         new Create();
     }
-
-
 }
