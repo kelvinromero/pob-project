@@ -12,7 +12,7 @@ import java.util.List;
 public class Tutor extends Person {
     @OneToMany(
             mappedBy = "tutor",
-            cascade = CascadeType.ALL
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     )
     private List<Pet> pets;
     @Version
@@ -34,10 +34,6 @@ public class Tutor extends Person {
         return pets;
     }
 
-    public void unbindPets() {
-        this.pets = null;
-    }
-    
     @Override
     public String toString() {
         return "Tutor [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + ", pets=" + pets + "]";
