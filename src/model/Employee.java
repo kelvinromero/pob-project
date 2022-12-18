@@ -11,7 +11,7 @@ import java.util.List;
 public class Employee extends Person {
     @OneToMany(
         mappedBy = "employee",
-        cascade = jakarta.persistence.CascadeType.ALL
+        cascade = {jakarta.persistence.CascadeType.PERSIST, jakarta.persistence.CascadeType.MERGE}
     )
     private List<ServiceOrder> serviceOrders;
     @Version
