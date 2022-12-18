@@ -10,12 +10,12 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Person {
 	
-	private String name;
-	@Id
-	private String document;
-	@ElementCollection
-	private List<String> phone = new ArrayList<>();
-	@Version
+    private String name;
+    @Id
+    private String document;
+    @ElementCollection
+    private List<String> phone = new ArrayList<>();
+    @Version
     private long version;
 	
 	public Person() {
