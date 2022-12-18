@@ -94,7 +94,7 @@ public class ServiceOrder {
     }
 
 	public void setObservation(String string) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		
 	}
 
