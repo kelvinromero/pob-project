@@ -2,11 +2,8 @@ package model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "services")
@@ -14,6 +11,8 @@ public class Service {
     @Id
     private String name;
     private double price;
+    @Version
+    private long version;
 
     public Service(){
     }

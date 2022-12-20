@@ -7,8 +7,7 @@ import model.Status;
 import model.Pet;
 import model.Tutor;
 import model.Employee;
-
-import java.util.ArrayList;
+import model.ServiceOrder;
 
 public class Create {
     public Create() {
@@ -20,6 +19,7 @@ public class Create {
             createStatus();
             createTutorAndPets();
             createEmployees();
+            createServiceOrders();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
@@ -106,6 +106,7 @@ public class Create {
 
         p = Facade.createPet("Fefe", "Pincher", 5, t);
         System.out.println("--->"+p);
+
     }
 
     private void createEmployees() throws Exception {
@@ -121,10 +122,31 @@ public class Create {
 
         e = Facade.createEmployee("Miguel", "12345678917", "982345685");
         System.out.println("--->"+e);
+
+        e = Facade.createEmployee("Isabel", "12345678918", "982345686");
+        System.out.println("--->"+e);
     }
+
+    private void createServiceOrders() throws Exception {
+        ServiceOrder so;
+
+        so = Facade.createServiceOrder("12345678910", 1, "agendado", "banho", "12345678914");
+        System.out.println("--->"+so);
+
+        so = Facade.createServiceOrder("12345678911", 2, "em andamento", "banho e tosa", "12345678915");
+        System.out.println("--->"+so);
+
+        so = Facade.createServiceOrder("12345678912", 3, "concluído", "tosa", "12345678916");
+        System.out.println("--->"+so);
+
+        so = Facade.createServiceOrder("12345678913", 4, "cancelado", "vacinação", "12345678917");
+        System.out.println("--->"+so);
+
+        so = Facade.createServiceOrder("12345678913", 5, "agendado", "vermifugação", "12345678914");
+        System.out.println("--->"+so);
+    }
+    
     public static void main(String[] args) {
         new Create();
     }
-
-
 }

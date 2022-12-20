@@ -19,9 +19,10 @@ public class ServiceOrder {
     private List<Service> services;
     @ManyToOne
     private Status status;
-    private String date;
     @ManyToOne
     private Employee employee;
+    @Version
+    private long version;
 
     public ServiceOrder() {
     }
@@ -32,7 +33,6 @@ public class ServiceOrder {
         this.services = new ArrayList<Service>();
         this.status = status;
         this.employee = employee;
-        this.date = null;
     }
 
     public Tutor getTutor() {
@@ -75,14 +75,6 @@ public class ServiceOrder {
         this.status = status;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public int getId() {
         return id;
     }
@@ -102,7 +94,7 @@ public class ServiceOrder {
     }
 
 	public void setObservation(String string) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		
 	}
 

@@ -1,8 +1,9 @@
 package model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +12,18 @@ import java.util.List;
 public class Tutor extends Person {
     @OneToMany(
             mappedBy = "tutor",
-            cascade = jakarta.persistence.CascadeType.ALL
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     )
-    private List<Pet> pets = new ArrayList<Pet>();
-
+    private List<Pet> pets;
+    @Version
+    private long version;
+    
     public Tutor() {
     }
 
     public Tutor(String name, String document, String phone) {
         super(name, document, phone);
+        this.pets = new ArrayList<Pet>();
     }
 
     public void addPet(Pet pet) {
@@ -29,7 +33,7 @@ public class Tutor extends Person {
     public List<Pet> getPets() {
         return pets;
     }
-    
+
     @Override
     public String toString() {
         return "Tutor [name=" + getName() + ", document=" + getDocument() + ", phone=" + getPhone() + ", pets=" + pets + "]";

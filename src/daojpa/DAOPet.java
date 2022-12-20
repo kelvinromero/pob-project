@@ -18,5 +18,4 @@ public class DAOPet extends DAO<Pet>{
 			return null;
 		}
 	}
-
 }

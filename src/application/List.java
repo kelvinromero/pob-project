@@ -15,6 +15,7 @@ public class List {
             Facade.listPets();
             Facade.listTutors();
             Facade.listEmployees();
+            Facade.listServiceOrders();
 
         } catch (Exception e) {
            System.out.println("--->"+e.getMessage());
